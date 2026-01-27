@@ -1,0 +1,16 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - NODE_ENV=production
+
+# COMMANDS:
+# docker compose up -d
+# docker compose down
