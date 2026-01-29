@@ -1,4 +1,4 @@
-name: Deploy Node.js App to AWS ECS
+name: Deploy Node App to EC2
 
 on:
   push:
@@ -10,16 +10,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Configure AWS credentials
+      - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.AWS_HOST }}
-          username: ${{ secrets.AWS_USERNAME }}
-          key: ${{ secrets.AWS_SSH_PRIVATE_KEY }}
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             cd /home/ubuntu/projects/docker-action-aws
-            git pull
-            docker-compose up -d --build
+            git pull origin main
+            docker compose up -d --build
