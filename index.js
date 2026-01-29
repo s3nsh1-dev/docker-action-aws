@@ -6,7 +6,7 @@ const server = http.createServer((req, res) => {
 
   if (method === "GET" && url === "/") {
     res.writeHead(200, { "Content-Type": "text/plain" });
-    res.end("Hello, World!\n");
+    res.end("Welcome to my Docker AWS deployment\n");
   } else if (method === "POST" && url === "/data") {
     res.writeHead(200, { "Content-Type": "application/json" });
     let body = "";
