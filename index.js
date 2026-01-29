@@ -6,7 +6,7 @@ const server = http.createServer((req, res) => {
 
   if (method === "GET" && url === "/") {
     res.writeHead(200, { "Content-Type": "text/plain" });
-    res.end("Welcome to Test number - 3");
+    res.end("DOCKER ACTION AWS - project completed");
   } else if (method === "POST" && url === "/data") {
     res.writeHead(200, { "Content-Type": "application/json" });
     let body = "";
@@ -29,6 +29,6 @@ server.listen(PORT, () => {
 /**
  * COMMANDS
  *
- * curl -X POST 13.233.44.118/data -d '{"name":"shubham", "age": 30}' -H "Content-Type: application/json"
- * curl http://localhost:3000
+ * curl -X POST <EC2_PUBLIC_IP>:8000/data -d '{"name":"shubham", "age": 30}' -H "Content-Type: application/json"
+ * curl http://<EC2_PUBLIC_IP>:8000
  */
